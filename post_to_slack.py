@@ -11,8 +11,7 @@ sc = SlackClient(token)
 tesla_channel = "C0MLP2U6S"
 
 def send_ip():
-	myip = [(s.connect(('8.8.8.8', 53)), s.getsockname()[0], s.close()) for s in 
-[socket.socket(socket.AF_INET, $
+	myip = [(s.connect(('8.8.8.8', 53)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
         ipstr = "TESLA'S IP: "+myip
         sc.rtm_send_message(tesla_channel,ipstr)
 
